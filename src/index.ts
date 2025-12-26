@@ -1,4 +1,4 @@
-// Parse Database
+// Load Database
 
 // Parse SQL Request into an object through a builder 
 
@@ -13,3 +13,21 @@
         // Flatten all the rows, will result on duplicated data
         // Filter all the rows that does not match the condition
         // SELECT -> Filter all unwanted columns
+
+import json from "./database.json"
+import Db from "./class/db"
+import { Database } from "./types/json"
+
+const db = new Db(json satisfies Database)
+
+/* 
+Do an iteration over parsed DB
+for (const table of db.getTables()) {
+    console.log('Poney A', table.getName())
+    for (const row of table.getRows()) {
+        for (const [colName, colValue] of row.getColsEntries()) {
+            console.log('POney B', colName, colValue)
+        }
+    }
+}
+*/ 
