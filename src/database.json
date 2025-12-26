@@ -13,6 +13,7 @@
     "actors": [
         { "id": 1, "name": "Keanu Reeves" },
         { "id": 2, "name": "Carrie-Anne Moss" },
+        { "id": 3, "name": "Di caprio" },
         { "id": 4, "name": "Sigourney Weaver" }
     ]
 }

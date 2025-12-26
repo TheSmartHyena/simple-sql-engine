@@ -21,6 +21,10 @@ class Db {
     getTableEntries() {
         return this.#tables.entries()
     }
+
+    getTable(name: string) {
+        return this.#tables.get(name) as Table
+    }
 }
 
 export default Db

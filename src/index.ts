@@ -19,10 +19,13 @@ import Db from "./class/db"
 import { Database } from "./types/json"
 import FileHelper from "./class/file"
 import { SqlRequestBuilderHelper } from "./class/sqlRequest"
+import SqlRequestExecutor from "./class/sqlRequestExecutor"
 
 const db = new Db(json satisfies Database)
 const rawLines = await FileHelper.getFile("/Users/philippe/Documents/perso/simple-sql/src/request.txt")
 const sqlRequest = SqlRequestBuilderHelper.getSqlRequest(rawLines as string[])
+
+new SqlRequestExecutor(db, sqlRequest).execute()
 
 /* 
 Do an iteration over parsed DB
