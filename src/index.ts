@@ -17,8 +17,12 @@
 import json from "./database.json"
 import Db from "./class/db"
 import { Database } from "./types/json"
+import FileHelper from "./class/file"
+import { SqlRequestBuilderHelper } from "./class/sqlRequest"
 
 const db = new Db(json satisfies Database)
+const rawLines = await FileHelper.getFile("/Users/philippe/Documents/perso/simple-sql/src/request.txt")
+const sqlRequest = SqlRequestBuilderHelper.getSqlRequest(rawLines as string[])
 
 /* 
 Do an iteration over parsed DB
@@ -30,4 +34,8 @@ for (const table of db.getTables()) {
         }
     }
 }
+
+console.log(sqlRequest)
 */ 
+
+
