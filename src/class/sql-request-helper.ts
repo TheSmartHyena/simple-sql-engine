@@ -1,6 +1,6 @@
 import SqlKeywords from "../enums/sql-keywords"
-import SqlRequest from "./sqlRequest"
-import SqlRequestBuilder from "./sqlRequestBuilder"
+import SqlRequest from "./sql-request"
+import SqlRequestBuilder from "./sql-resuest-builder"
 
 class SqlRequestBuilderHelper {
     static #getLinesByKeyword(keyWord: SqlKeywords, rawLines: string[]) {

@@ -31,13 +31,13 @@ console.log(sqlRequest)
 import json from "./database.json"
 import { Database } from "./types/json"
 import FileHelper from "./helpers/file"
-import SqlRequestExecutor from "./class/sqlRequestExecutor"
+import SqlRequestHandler from "./class/sql-request-handler"
 import Db from "./class/database/db"
-import SqlRequestBuilderHelper from "./class/sqlRequestHelper"
+import SqlRequestBuilderHelper from "./class/sql-request-helper"
 
 const db = new Db(json satisfies Database)
 const rawLines = await FileHelper.getFile("/Users/philippe/Documents/perso/simple-sql/src/request.txt")
 const sqlRequest = SqlRequestBuilderHelper.getSqlRequest(rawLines as string[])
 
-const result = new SqlRequestExecutor(db, sqlRequest).execute()
+const result = new SqlRequestHandler(db, sqlRequest).execute()
 console.log(result)

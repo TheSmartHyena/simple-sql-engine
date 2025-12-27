@@ -1,5 +1,5 @@
 import Join from "../class/join"
-import TableCol from "../class/tableCol"
+import TableCol from "../class/table-col"
 import Where from "../class/where"
 
 interface Params {

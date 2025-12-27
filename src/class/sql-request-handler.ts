@@ -1,9 +1,9 @@
 import { DatabaseContent, DatabaseTableRow } from "../types/json"
 import Db from "./database/db"
 import Table from "./database/table"
-import SqlRequest from "./sqlRequest"
+import SqlRequest from "./sql-request"
 
-class SqlRequestExecutor {
+class SqlRequestHandler {
     // Main stuff
     #db: Db
     #sqlRequest: SqlRequest
@@ -81,4 +81,4 @@ class SqlRequestExecutor {
     }
 }   
 
-export default SqlRequestExecutor
+export default SqlRequestHandler

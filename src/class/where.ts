@@ -2,7 +2,7 @@ import { operators } from "../constants/operators"
 import OperatorsList from "../enums/operators"
 import { DatabaseContent } from "../types/json"
 import { Operator } from "../types/operator"
-import TableCol from "./tableCol"
+import TableCol from "./table-col"
 
 class Where {
     tableCol: TableCol

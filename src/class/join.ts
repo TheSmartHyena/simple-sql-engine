@@ -1,4 +1,4 @@
-import TableCol from "./tableCol"
+import TableCol from "./table-col"
 
 class Join {
     #table: string = ""

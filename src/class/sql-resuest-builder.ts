@@ -1,6 +1,6 @@
 import Params from "../interfaces/params"
 import Join from "./join"
-import TableCol from "./tableCol"
+import TableCol from "./table-col"
 import Where from "./where"
 
 class SqlRequestBuilder {
