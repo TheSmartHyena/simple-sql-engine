@@ -9,7 +9,7 @@ interface Params {
 
 // It's important to put the length 2 operator first => when we .includes we dont want false positives
 const operators = [">=", "<=", ">", "<", "=" ] as const;
-type Operator = typeof operators[number];
+export type Operator = typeof operators[number];
  
 class TableCol {
     table: string = ""
@@ -27,6 +27,10 @@ class TableCol {
 
     getCol() {
         return this.col
+    }
+
+    getTableCol() {
+        return `${this.table}.${this.col}`
     }
 } 
 
@@ -81,6 +85,41 @@ class Where {
             }
         }
         return "=" // Should not be triggered but typescript was anoying
+    }
+
+    #lessThan(a: DatabaseContent, b: DatabaseContent) {
+        return a < b
+    }
+
+    #lessEqualThan(a: DatabaseContent, b: DatabaseContent) {
+        return a <= b
+    }
+
+    #greaterThan(a: DatabaseContent, b: DatabaseContent) {
+        return a > b
+    }
+
+    #greaterEqualThan(a: DatabaseContent, b: DatabaseContent) {
+        return a >= b
+    }
+
+    #equal(a: DatabaseContent, b: DatabaseContent) {
+        return a == b
+    }
+
+    compare(a: DatabaseContent): boolean {
+        switch(this.operator) {
+            case "<": 
+                return this.#lessThan(a, this.value)
+            case "<=": 
+                return this.#lessEqualThan(a, this.value)
+            case ">":
+                return this.#greaterThan(a, this.value)
+            case ">=":
+                return this.#greaterEqualThan(a, this.value)
+            case '=':
+                return this.#equal(a, this.value)
+        }
     }
 }
 

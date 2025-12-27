@@ -25,7 +25,8 @@ const db = new Db(json satisfies Database)
 const rawLines = await FileHelper.getFile("/Users/philippe/Documents/perso/simple-sql/src/request.txt")
 const sqlRequest = SqlRequestBuilderHelper.getSqlRequest(rawLines as string[])
 
-new SqlRequestExecutor(db, sqlRequest).execute()
+const result = new SqlRequestExecutor(db, sqlRequest).execute()
+console.log(result)
 
 /* 
 Do an iteration over parsed DB

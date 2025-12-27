@@ -1,6 +1,5 @@
 import { DatabaseContent, DatabaseTableRow } from "../types/json"
 import Db from "./db"
-import Row from "./row"
 import { SqlRequest } from "./sqlRequest"
 import Table from "./table"
 
@@ -13,6 +12,7 @@ class SqlRequestExecutor {
     #table: Table
     #flattened: Record<string, DatabaseContent>[] = []
     #flattenedFiltered: Record<string, DatabaseContent>[] = []
+    #result: Record<string, DatabaseContent>[] = []
 
     constructor(db: Db, sqlRequest: SqlRequest) {
         this.#db = db
@@ -56,19 +56,28 @@ class SqlRequestExecutor {
     }
 
     #where() {
-
+        this.#flattenedFiltered = this.#flattened.filter(item => this.#sqlRequest.where.compare(item[this.#sqlRequest.where.tableCol.getTableCol()]))
     }
 
-    #export() {
-        
+    #select() {
+        this.#result = this.#flattenedFiltered.map(item => {
+            const row: Record<string, DatabaseContent>  = {}
+
+            for (const tableCol of this.#sqlRequest.select) {
+                row[tableCol.getTableCol()] = item[tableCol.getTableCol()]
+            }
+
+            return row
+        })
     }
 
     execute() {
         this.#flatten()
         this.#join()
-        console.log('Poney flattened', this.#flattened)
+        this.#where()
+        this.#select()
 
-
+        return this.#result
     }
 }   
 
