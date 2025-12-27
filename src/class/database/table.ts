@@ -1,12 +1,14 @@
-import { DatabaseTable } from "../types/json";
-import Row from "./row";
+import { DatabaseTable } from "../../types/json"
+import Row from "./row"
+
 
 class Table {
     #name = ""
-    #rows = new Array<Row>()
+    #rows: Row[]
 
     constructor(name: string, content: DatabaseTable) {
         this.#name = name
+        this.#rows = []
         for (const entry of content) {
             this.#rows.push(new Row(entry))
         }

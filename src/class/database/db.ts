@@ -1,4 +1,4 @@
-import { Database,  } from "../types/json"
+import { Database } from "../../types/json"
 import Table from "./table"
 
 class Db {

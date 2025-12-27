@@ -1,4 +1,5 @@
-import { DatabaseContent, DatabaseTableRow } from "../types/json";
+import { DatabaseContent, DatabaseTableRow } from "../../types/json"
+
 
 class Row {
     #cols = new Map<string, DatabaseContent>()

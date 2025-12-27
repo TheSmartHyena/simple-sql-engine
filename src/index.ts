@@ -14,20 +14,6 @@
         // Filter all the rows that does not match the condition
         // SELECT -> Filter all unwanted columns
 
-import json from "./database.json"
-import Db from "./class/db"
-import { Database } from "./types/json"
-import FileHelper from "./class/file"
-import { SqlRequestBuilderHelper } from "./class/sqlRequest"
-import SqlRequestExecutor from "./class/sqlRequestExecutor"
-
-const db = new Db(json satisfies Database)
-const rawLines = await FileHelper.getFile("/Users/philippe/Documents/perso/simple-sql/src/request.txt")
-const sqlRequest = SqlRequestBuilderHelper.getSqlRequest(rawLines as string[])
-
-const result = new SqlRequestExecutor(db, sqlRequest).execute()
-console.log(result)
-
 /* 
 Do an iteration over parsed DB
 for (const table of db.getTables()) {
@@ -42,4 +28,16 @@ for (const table of db.getTables()) {
 console.log(sqlRequest)
 */ 
 
+import json from "./database.json"
+import { Database } from "./types/json"
+import FileHelper from "./helpers/file"
+import SqlRequestExecutor from "./class/sqlRequestExecutor"
+import Db from "./class/database/db"
+import SqlRequestBuilderHelper from "./class/sqlRequestHelper"
 
+const db = new Db(json satisfies Database)
+const rawLines = await FileHelper.getFile("/Users/philippe/Documents/perso/simple-sql/src/request.txt")
+const sqlRequest = SqlRequestBuilderHelper.getSqlRequest(rawLines as string[])
+
+const result = new SqlRequestExecutor(db, sqlRequest).execute()
+console.log(result)

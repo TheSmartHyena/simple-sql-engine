@@ -1,7 +1,7 @@
 import { DatabaseContent, DatabaseTableRow } from "../types/json"
-import Db from "./db"
-import { SqlRequest } from "./sqlRequest"
-import Table from "./table"
+import Db from "./database/db"
+import Table from "./database/table"
+import SqlRequest from "./sqlRequest"
 
 class SqlRequestExecutor {
     // Main stuff

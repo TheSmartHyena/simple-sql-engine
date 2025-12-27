@@ -1,0 +1,12 @@
+import Join from "../class/join"
+import TableCol from "../class/tableCol"
+import Where from "../class/where"
+
+interface Params {
+    select: TableCol[]
+    from: string
+    joins: Join[]
+    where: Where
+}
+
+export default Params
